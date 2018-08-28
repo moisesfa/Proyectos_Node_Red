@@ -1,0 +1,684 @@
+[
+    {
+        "id": "33f3d3.0a52fc2e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "7d9346a4.4ed7c8",
+        "type": "scanner",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "timeout": 5000,
+        "x": 185,
+        "y": 181,
+        "wires": [
+            [
+                "1683e70c.8f9779"
+            ]
+        ]
+    },
+    {
+        "id": "7e6b2004.da14a",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 934,
+        "y": 183,
+        "wires": []
+    },
+    {
+        "id": "f10bbc54.1a2a5",
+        "type": "inject",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "str",
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 102,
+        "y": 118,
+        "wires": [
+            [
+                "7d9346a4.4ed7c8"
+            ]
+        ]
+    },
+    {
+        "id": "1683e70c.8f9779",
+        "type": "peripheral",
+        "z": "33f3d3.0a52fc2e",
+        "name": "c4:7c:8d:66:2e:a9",
+        "mac": "c4:7c:8d:66:2e:a9",
+        "timeout": 10000,
+        "x": 313,
+        "y": 115,
+        "wires": [
+            [
+                "a3649494.5af5c8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a3649494.5af5c8",
+        "type": "service",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "x": 445,
+        "y": 181,
+        "wires": [
+            [
+                "e603c9c4.2ec9d8",
+                "8d0e632.eef2fa",
+                "e2a2cc96.1e682",
+                "698e4869.23ef08"
+            ]
+        ]
+    },
+    {
+        "id": "e603c9c4.2ec9d8",
+        "type": "characteristic",
+        "z": "33f3d3.0a52fc2e",
+        "name": "VERSIONBATTERY_UUID",
+        "uuid": "00001a0200001000800000805f9b34fb",
+        "subscribe": false,
+        "x": 701,
+        "y": 184,
+        "wires": [
+            [
+                "7e6b2004.da14a"
+            ]
+        ]
+    },
+    {
+        "id": "f8fc86c.1d36e78",
+        "type": "characteristic",
+        "z": "33f3d3.0a52fc2e",
+        "name": "SENSORDATA_UUID",
+        "uuid": "00001a0100001000800000805f9b34fb",
+        "subscribe": false,
+        "x": 396,
+        "y": 332,
+        "wires": [
+            [
+                "e2617c6d.7cab3",
+                "95bafa53.690d98",
+                "706896ee.b61d18",
+                "e198fc74.5b55c",
+                "6879bd02.160644"
+            ]
+        ]
+    },
+    {
+        "id": "e2617c6d.7cab3",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1061,
+        "y": 336,
+        "wires": []
+    },
+    {
+        "id": "2f0c55c1.6906ba",
+        "type": "characteristic out",
+        "z": "33f3d3.0a52fc2e",
+        "name": "WRITEMODE_UUID",
+        "uuid": "00001a0000001000800000805f9b34fb",
+        "x": 828,
+        "y": 57,
+        "wires": []
+    },
+    {
+        "id": "430a400a.634c5",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 279,
+        "y": 446,
+        "wires": []
+    },
+    {
+        "id": "8d0e632.eef2fa",
+        "type": "function",
+        "z": "33f3d3.0a52fc2e",
+        "name": "[0xA0, 0x1F]",
+        "func": "msg.payload = new Buffer([0xA0,0x1F]);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 608,
+        "y": 58,
+        "wires": [
+            [
+                "2f0c55c1.6906ba"
+            ]
+        ]
+    },
+    {
+        "id": "4fefed5.7f5b414",
+        "type": "characteristic",
+        "z": "33f3d3.0a52fc2e",
+        "name": "WRITEMODE_UUID",
+        "uuid": "00001a0000001000800000805f9b34fb",
+        "subscribe": false,
+        "x": 859,
+        "y": 243,
+        "wires": [
+            [
+                "37b76ea6.fe62e2"
+            ]
+        ]
+    },
+    {
+        "id": "37b76ea6.fe62e2",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1056,
+        "y": 250,
+        "wires": []
+    },
+    {
+        "id": "e2a2cc96.1e682",
+        "type": "delay",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 656,
+        "y": 243,
+        "wires": [
+            [
+                "4fefed5.7f5b414"
+            ]
+        ]
+    },
+    {
+        "id": "698e4869.23ef08",
+        "type": "delay",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 182,
+        "y": 333,
+        "wires": [
+            [
+                "f8fc86c.1d36e78"
+            ]
+        ]
+    },
+    {
+        "id": "95bafa53.690d98",
+        "type": "function",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Temp",
+        "func": "//var temp = msg.payload.data;\nvar msg0 = { payload :msg.payload.data[0] };\nvar msg1 = { payload :msg.payload.data[1]*256 };\nvar msg2 = {payload: (msg0.payload + msg1.payload)/10};\nreturn msg2;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 132,
+        "y": 446,
+        "wires": [
+            [
+                "430a400a.634c5",
+                "b0282ae4.2562c8",
+                "6b6066ba.abb198"
+            ]
+        ]
+    },
+    {
+        "id": "b0282ae4.2562c8",
+        "type": "ui_gauge",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Temperatura",
+        "group": "6043d5e6.eb97ec",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 229,
+        "y": 505,
+        "wires": []
+    },
+    {
+        "id": "e0c23010.c3336",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 604,
+        "y": 445,
+        "wires": []
+    },
+    {
+        "id": "706896ee.b61d18",
+        "type": "function",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Moist",
+        "func": "var msg0 = { payload :msg.payload.data[7] };\nreturn msg0;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 457,
+        "y": 445,
+        "wires": [
+            [
+                "e0c23010.c3336",
+                "8c3fee04.c6c4d",
+                "3ddd49c6.e00c36"
+            ]
+        ]
+    },
+    {
+        "id": "8c3fee04.c6c4d",
+        "type": "ui_gauge",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Humedad",
+        "group": "6043d5e6.eb97ec",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humedad",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 544,
+        "y": 504,
+        "wires": []
+    },
+    {
+        "id": "529d7809.eabbf8",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 904,
+        "y": 445,
+        "wires": []
+    },
+    {
+        "id": "e198fc74.5b55c",
+        "type": "function",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Light",
+        "func": "\n//var temp = msg.payload.data[0];\nvar msg0 = { payload :msg.payload.data[3] };\nvar msg1 = { payload :msg.payload.data[4]*256 };\nvar msg2 = {payload: (msg0.payload + msg1.payload)};\nreturn msg2;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 757,
+        "y": 445,
+        "wires": [
+            [
+                "529d7809.eabbf8",
+                "fd83611b.5e428",
+                "cc32366c.5fb668"
+            ]
+        ]
+    },
+    {
+        "id": "fd83611b.5e428",
+        "type": "ui_gauge",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Luminosidad",
+        "group": "b7fd389e.403e68",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Luminosidad",
+        "label": "Lux",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 854,
+        "y": 504,
+        "wires": []
+    },
+    {
+        "id": "9e8db393.bce98",
+        "type": "debug",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1205,
+        "y": 445,
+        "wires": []
+    },
+    {
+        "id": "6879bd02.160644",
+        "type": "function",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Fert",
+        "func": "\n//var temp = msg.payload.data[0];\nvar msg0 = { payload :msg.payload.data[8] };\nvar msg1 = { payload :msg.payload.data[9]*256 };\nvar msg2 = {payload: (msg0.payload + msg1.payload)};\nreturn msg2;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1058,
+        "y": 445,
+        "wires": [
+            [
+                "9e8db393.bce98",
+                "703aad1e.4ff9e4",
+                "ebc0b52a.87a418"
+            ]
+        ]
+    },
+    {
+        "id": "703aad1e.4ff9e4",
+        "type": "ui_gauge",
+        "z": "33f3d3.0a52fc2e",
+        "name": "Fertilidad",
+        "group": "b7fd389e.403e68",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Fertilidad",
+        "label": "us/cm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "10000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1145,
+        "y": 504,
+        "wires": []
+    },
+    {
+        "id": "6b6066ba.abb198",
+        "type": "ui_chart",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "group": "38bf3047.a562a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 228,
+        "y": 552,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "3ddd49c6.e00c36",
+        "type": "ui_chart",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "group": "38bf3047.a562a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Humedad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 536,
+        "y": 552,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "cc32366c.5fb668",
+        "type": "ui_chart",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "group": "63fcbaae.118624",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Luminosidad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10000",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 858,
+        "y": 549,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ebc0b52a.87a418",
+        "type": "ui_chart",
+        "z": "33f3d3.0a52fc2e",
+        "name": "",
+        "group": "63fcbaae.118624",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Fertilidad",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10000",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1146,
+        "y": 549,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6043d5e6.eb97ec",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group 1",
+        "tab": "509dd2f0.28a77c",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b7fd389e.403e68",
+        "type": "ui_group",
+        "name": "Group 3",
+        "tab": "509dd2f0.28a77c",
+        "order": 3,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "38bf3047.a562a",
+        "type": "ui_group",
+        "z": "",
+        "name": "Group 2",
+        "tab": "509dd2f0.28a77c",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "63fcbaae.118624",
+        "type": "ui_group",
+        "name": "Group 4",
+        "tab": "509dd2f0.28a77c",
+        "order": 4,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "509dd2f0.28a77c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
