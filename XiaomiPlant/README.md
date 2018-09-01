@@ -4,22 +4,23 @@
 ## Descripción del proyecto
 
 
-Xiaomi Mi Plant es un dispositivo con el que podremos controlar la humedad, la fertilidad, la temperatura y la luz ambiental de la planta en la que lo situemos. Usa Bluetooth de baja energia para la comunicación con el exterior. 
+Xiaomi Mi Plant es un dispositivo con el que podremos controlar la humedad, la fertilidad, la temperatura y la luz ambiental de la planta en la que lo situemos. Usa Bluetooth de baja energía para la comunicación con el exterior y tiene su propia aplicación para teléfono móvil. 
 
 Node-RED es una herramienta de visualización open-source creada por IBM (IBM Emerging Technology) y que nos permite interconectar todos nuestros elementos al Internet de las cosas.
 
-Este proyecto une ambos sitemas permitiéndonos ver graficamente los datos que el sensor de planta nos envia.
+Este proyecto une ambos sistemas, permitiéndonos ver gráficamente los datos que el sensor de planta nos envía y en un futuro poder enviarlos a una nube para su análisis.
 
 ## Funcionamiento
 
+Después de situar el sensor en una planta el software de Node-RED, utilizado en una Raspberry Pi, se encarga de estos procesos cíclicamente:
 
-Despues de situar el sensor en una planta , el software de Node-RED utilizado en una Raspberry Pi se encaga de estos procesos ciclicamente:
-
-  1. Buscar, por su dirección "xx:xx:xx:xx:xx:xx", durante un tiempo si el dispositvo está al alcance.
-  2. Si lo encuentra lee sus servicios, características y se conecta a él.
-  3. Una vez conectado, es necesario escribir un dato {0xA0, 0x1F} en la siguiente caracteristica "00001a00-0000-1000-8000-00805f9b34fb" para que envíe la información.
-  4. Ahora recibe la información en la caracteristica "00001a01-0000-1000-8000-00805f9b34fb" y se trata para separar cada uno de los datos del sensor.
+  1. Buscar, por su dirección Bluetooth "xx:xx:xx:xx:xx:xx", durante un tiempo programable si el dispositivo está dentro de su alcance.
+  2. Si lo encuentra, lee sus servicios, características y se conecta a él.
+  3. Una vez conectado, es necesario escribir un dato {0xA0, 0x1F} en la siguiente característica "00001a00-0000-1000-8000-00805f9b34fb" para que nos transmita la información.
+  4. Ahora recibe la información en la característica "00001a01-0000-1000-8000-00805f9b34fb" y se formatea para separar cada uno de los datos del sensor.
   5. Finalmente la temperatura, humedad, luminosidad y la fertilidad se muestran de forma gráfica.
+
+El proyecto se puede ampliar leyendo también el firmware del sensor y el nivel de batería. 
 
 ### Esquema de nodos del proyecto
 
@@ -35,7 +36,7 @@ Despues de situar el sensor en una planta , el software de Node-RED utilizado en
 Para el tratamiento del Bluetooth BLE se utiliza el módulo:
 [node-red-contrib-ignoble](https://www.npmjs.com/package/node-red-contrib-ignoble)
 
-Para mostar los datos graficamente se utiliza el módulo:
+Para mostrar los datos gráficamente se utiliza el módulo:
 [node-red-dashboard](https://www.npmjs.com/package/node-red-dashboard)
 
 ## Licencia
