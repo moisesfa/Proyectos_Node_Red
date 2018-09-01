@@ -1,6 +1,8 @@
-#Xiaomi Mi Plant y Node-RED
+# Xiaomi Mi Plant y Node-RED
 
-##Descripción del proyecto
+
+## Descripción del proyecto
+
 
 Xiaomi Mi Plant es un dispositivo con el que podremos controlar la humedad, la fertilidad, la temperatura y la luz ambiental de la planta en la que lo situemos. Usa Bluetooth de baja energia para la comunicación con el exterior. 
 
@@ -8,7 +10,8 @@ Node-RED es una herramienta de visualización open-source creada por IBM (IBM Em
 
 Este proyecto une ambos sitemas permitiéndonos ver graficamente los datos que el sensor de planta nos envia.
 
-##Funcionamiento
+## Funcionamiento
+
 
 Despues de situar el sensor en una planta , el software de Node-RED utilizado en una Raspberry Pi se encaga de estos procesos ciclicamente:
 
@@ -18,15 +21,16 @@ Despues de situar el sensor en una planta , el software de Node-RED utilizado en
   4. Ahora recibe la información en la caracteristica "00001a01-0000-1000-8000-00805f9b34fb" y se trata para separar cada uno de los datos del sensor.
   5. Finalmente la temperatura, humedad, luminosidad y la fertilidad se muestran de forma gráfica.
 
-###Esquema de nodos del proyecto 
+### Esquema de nodos del proyecto
+
 
 ![Nodos proyecto](https://raw.githubusercontent.com/moisesfa/Proyectos_Node_Red/master/XiaomiPlant/img_XiaomiPlant/cap_Xmiplant_10.png)
 
-###Dashboard del proyecto 
+### Dashboard del proyecto 
 
 ![Dashboard proyecto](https://raw.githubusercontent.com/moisesfa/Proyectos_Node_Red/master/XiaomiPlant/img_XiaomiPlant/cap_Xmiplant_08.png)
 
-##Referencias a Módulos Node-RED
+## Referencias a Módulos Node-RED
 
 Para el tratamiento del Bluetooth BLE se utiliza el módulo:
 [node-red-contrib-ignoble](https://www.npmjs.com/package/node-red-contrib-ignoble)
@@ -34,7 +38,7 @@ Para el tratamiento del Bluetooth BLE se utiliza el módulo:
 Para mostar los datos graficamente se utiliza el módulo:
 [node-red-dashboard](https://www.npmjs.com/package/node-red-dashboard)
 
-##Licencia
+## Licencia
 
 Copyright (c) <2018> Moisés Fernández Arias
 
